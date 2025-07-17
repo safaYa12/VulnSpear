@@ -39,7 +39,14 @@ It performs dynamic security testing (DAST) against web applications, crawling a
 - Jinja2 (templates)
 
 ---
+## 🔐 License & Disclaimer
 
+This project is licensed under the [MIT License](LICENSE).
+
+> ⚠️ **Disclaimer**  
+> VulnSpear is intended **only** for ethical hacking, learning, and authorized security assessments.  
+> Unauthorized use of this tool against systems you do not own or have explicit permission to test is strictly forbidden.  
+> The developer is not responsible for any misuse or resulting consequences.
 ## 🧪 Getting Started
 
 ### 🔧 Install Dependencies
