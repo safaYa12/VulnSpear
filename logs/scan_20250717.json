@@ -1,11 +1,1 @@
-[
-    {
-        "url": "http://testfire.net/index.jsp?content=inside_press.htm%26%26+sleep+5",
-        "param": "content",
-        "original_value": "inside_press.htm",
-        "payload": "&& sleep 5",
-        "vuln_type": "Blind Command Injection",
-        "severity": "Critical",
-        "evidence": "Response delay: 7.96s"
-    }
-]
+
