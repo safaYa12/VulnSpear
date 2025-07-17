@@ -46,3 +46,5 @@ It performs dynamic security testing (DAST) against web applications, crawling a
 
 ```bash
 pip install -r requirements.txt
+
+python app.py
