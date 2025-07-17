@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VulnSpear: The Offensive Security Scanner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+    a {
+      color: #4da8ff;
+    }
+    a:hover {
+      color: #82cfff;
+    }
+    table a {
+      color: #4da8ff;
+    }
+    table a:hover {
+      color: #82cfff;
+    }
+    table {
+      background-color: #1e1e1e;
+    }
+    th, td {
+      color: #ddd !important;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #2a2a2a;
+    }
+    pre {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light">
+  <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <div class="text-center">
+      <h1 class="mb-2 text-danger fw-bold">⚡ VulnSpear: The Offensive Security Scanner</h1>
+      <h5 class="mb-3 text-info">Pierce your web app’s defenses — before someone else does.</h5>
+      <p class="text-secondary mb-4">
+        This tool helps you hunt down common web vulnerabilities like XSS, SQLi, IDOR, and more —
+        giving you clear, actionable results with every scan. <br>
+        <strong class="text-light">Developed with dedication by Safayath — your partner in offensive security.</strong>
+      </p>
+
+    <!-- Input form -->
+    <form method="POST" action="/" class="mb-4">
+      <div class="form-group">
+        <label for="url" class="text-light">Target URL:</label>
+        <input type="url" name="url" id="url" class="form-control bg-dark text-light border-secondary"
+               placeholder="https://example.com" required>
+      </div>
+      <button type="submit" class="btn btn-danger">🚀 Start Scan</button>
+    </form>
+
+    <!-- Errors -->
+    {% if errors %}
+      <div class="alert alert-warning">
+        <ul class="mb-0">
+          {% for error in errors %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <!-- Results -->
+{% if results %}
+  <h3 class="mb-3">🔍 Scan Results</h3>
+  <table class="table table-bordered table-striped table-dark">
+    <thead>
+      <tr>
+        <th>URL</th>
+        <th>Vulnerability Type</th>
+        <th>Severity</th>
+        <th>Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for vuln in results %}
+        <tr>
+          <td><a href="{{ vuln.url }}" target="_blank" rel="noopener noreferrer">{{ vuln.url }}</a></td>
+          <td>{{ vuln.vuln_type }}</td>
+          <td>{{ vuln.severity }}</td>
+          <td><pre style="white-space: pre-wrap;">{{ vuln.evidence | e }}</pre></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% elif results is not none and results|length == 0 %}
+  <div class="alert alert-success">
+    ✅ Scan complete. No vulnerabilities found!
+  </div>
+{% endif %}
+
+      <!-- Report link -->
+    <a href="{{ url_for('report') }}" class="btn btn-outline-primary mt-3">View Full Report</a>
+  </div>
+</body>
+</html>
+
